@@ -4,15 +4,14 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 
-// Initialize express app
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);  // Set up Socket.IO
+const io = socketIo(server);
 
 // Store messages history
 let messages = [];  // This will hold all the chat messages
 
-// Serve static files (HTML, CSS, JS)
+// Serve static files from the 'public' folder
 app.use(express.static('public'));
 
 // Handle connection event for each new client
