@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
     console.log('A user connected');
     
     // Send the current chat history to the new user
-    socket.emit('chat history', messages);
+    socket.emit('chat history', messages);  // Emit chat history on new connection
     
     // Handle 'chat message' event from client
     socket.on('chat message', (msg) => {

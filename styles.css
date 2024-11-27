@@ -9,6 +9,8 @@ body {
   ul {
     list-style-type: none;
     padding: 0;
+    max-height: 400px;
+    overflow-y: scroll;
   }
   
   li {
