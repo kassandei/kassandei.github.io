@@ -6,12 +6,12 @@ const socketIo = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server);  // Set up socket.io
 
 // Store messages history
 let messages = [];  // This will hold all the chat messages
 
-// Serve static files from the 'public' folder
+// Serve static files from the 'public' folder (this serves index.html, script.js, etc.)
 app.use(express.static('public'));
 
 // Handle connection event for each new client
