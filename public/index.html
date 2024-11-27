@@ -3,11 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat App</title>
+  <title>minimal</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Chat Room</h1>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="profile-pic"></div>
+      <div class="contact">
+        <div class="avatar"></div>
+        <div class="contact-info">
+          <span class="name">Nome</span>
+          <span class="message-preview">testo...</span>
+        </div>
+      </div>
+      <div class="contact">
+        <div class="avatar"></div>
+        <div class="contact-info">
+          <span class="name">Nome</span>
+          <span class="message-preview">testo...</span>
+        </div>
+      </div>
+    </aside>
+    <main class="chat">
+      <div class="chat-header">
+        <div class="circle"></div><!--profilo con cui si sta ciattando-->
+      </div>
+      <div class="chat-body">
+        <div class="message-bubble"></div>
+        <div class="message-input"></div>
+      </div>
+      <footer class="chat-footer">
+        <input type="text" class="message-box" id="message-box" placeholder="Text" />
+        <button class="send-button">➤</button>
+      </footer>
+    </main>
+  </div>
 
   <ul id="messages"></ul>  <!-- Display chat messages here -->
 
