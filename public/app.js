@@ -1,4 +1,8 @@
-const socket = io();
+// Connect to Socket.io using the Vercel serverless WebSocket function
+const socket = io({
+  transports: ["websocket"], // Force WebSocket transport
+  path: "/api/websocket",    // Path for the WebSocket serverless function
+});
 
 const messageForm = document.getElementById('message-form');
 const messageInput = document.getElementById('message-input');
