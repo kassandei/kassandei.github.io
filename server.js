@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
         // Save the new message to the message history
         messages.push(msg);
 
-        // Broadcast the message to all clients
+        // Broadcast the message to all clients (including the sender)
         io.emit('chat message', msg);
     });
 
