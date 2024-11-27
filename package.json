@@ -2,9 +2,9 @@
     "name": "my-app",
     "version": "1.0.0",
     "description": "My Node.js app",
-    "main": "src/server.js",
+    "main": "server.js",
     "scripts": {
-      "start": "node server.js"
+      "start": "node src/server.js"
     },
     "dependencies": {
       "express": "^4.17.1"
