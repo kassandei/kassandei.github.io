@@ -1,4 +1,4 @@
-// api/websocket.js
+// Import the Server class from socket.io
 const { Server } = require("socket.io");
 
 export default function handler(req, res) {
@@ -9,6 +9,7 @@ export default function handler(req, res) {
 
   // Initialize Socket.io
   const io = new Server(res.socket.server);
+  
   io.on("connection", (socket) => {
     console.log("A user connected");
 
@@ -22,6 +23,7 @@ export default function handler(req, res) {
     });
   });
 
-  res.socket.server.io = io; // Attach Socket.io server to Vercel's serverless function
+  // Attach the Socket.io server to the Vercel serverless function
+  res.socket.server.io = io;
   res.status(200).send("Socket.io initialized.");
 }
