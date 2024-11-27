@@ -22,3 +22,12 @@ socket.on('chat message', (msg) => {
   li.textContent = msg;
   messages.appendChild(li);
 });
+
+// Listen for the initial chat history from the server
+socket.on('chat history', (history) => {
+  history.forEach((msg) => {
+    const li = document.createElement('li');
+    li.textContent = msg;
+    messages.appendChild(li);
+  });
+});

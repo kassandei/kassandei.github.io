@@ -9,6 +9,9 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);  // Set up Socket.IO
 
+// Store messages history
+let messages = [];  // This will hold all the chat messages
+
 // Serve static files (HTML, CSS, JS)
 app.use(express.static('public'));
 
@@ -16,8 +19,14 @@ app.use(express.static('public'));
 io.on('connection', (socket) => {
     console.log('A user connected');
     
+    // Send the current chat history to the new user
+    socket.emit('chat history', messages);
+    
     // Handle 'chat message' event from client
     socket.on('chat message', (msg) => {
+        // Save the new message to the message history
+        messages.push(msg);
+
         // Broadcast the message to all clients
         io.emit('chat message', msg);
     });
