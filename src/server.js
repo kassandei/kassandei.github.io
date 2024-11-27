@@ -1,21 +1,11 @@
-const WebSocket = require('ws');
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
 
-const server = new WebSocket.Server({ port: 8080 });
+app.get('/', (req, res) => {
+  res.send('Hello, world!');
+});
 
-server.on('connection', (socket) => {
-    console.log('A user connected');
-
-    socket.on('message', (message) => {
-        console.log(`Received: ${message}`);
-        // Broadcast the message to all connected clients
-        server.clients.forEach((client) => {
-            if (client.readyState === WebSocket.OPEN) {
-                client.send(message);
-            }
-        });
-    });
-
-    socket.on('close', () => {
-        console.log('A user disconnected');
-    });
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
