@@ -3,21 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat App</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Real-time Messaging</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Chat Room</h1>
-
-  <ul id="messages"></ul>  <!-- Display chat messages here -->
-
-  <form id="form">
-    <input id="input" autocomplete="off" placeholder="Type your message..." />
-    <button>Send</button>
+  <h1>Real-time Messaging App</h1>
+  <div id="messages"></div>
+  <form id="message-form">
+    <input id="message-input" autocomplete="off" placeholder="Type your message" />
+    <button type="submit">Send</button>
   </form>
 
-  <!-- Include the Socket.IO client-side library -->
-  <script src="/socket.io/socket.io.js"></script>  <!-- This is important -->
-  <script src="script.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
