@@ -1,44 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat App</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        #messages { height: 300px; overflow-y: auto; border: 1px solid #ccc; margin-bottom: 10px; padding: 10px; }
-        #messageBox { width: 100%; padding: 10px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Form with Text Box</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Chat App</h1>
-    <div id="messages"></div>
-    <input type="text" id="messageBox" placeholder="Type your message">
-    <button id="sendBtn">Send</button>
 
-    <script>
-        const messagesDiv = document.getElementById('messages');
-        const messageBox = document.getElementById('messageBox');
-        const sendBtn = document.getElementById('sendBtn');
+  <div class="container">
+    <h1>Simple Text Box Example</h1>
+    <form action="#">
+      <label for="userInput">Enter Text:</label>
+      <input type="text" id="userInput" name="userInput" placeholder="Type something here...">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 
-        const socket = new WebSocket('ws://localhost:8080');
-
-        // Display received messages
-        socket.onmessage = (event) => {
-            const message = document.createElement('p');
-            message.textContent = event.data;
-            messagesDiv.appendChild(message);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        };
-
-        // Send messages
-        sendBtn.addEventListener('click', () => {
-            const message = messageBox.value;
-            if (message) {
-                socket.send(message);
-                messageBox.value = '';
-            }
-        });
-    </script>
 </body>
 </html>
