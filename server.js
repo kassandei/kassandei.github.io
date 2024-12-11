@@ -1,24 +1,30 @@
-const express = require('express');
+const WebSocket = require('ws');
 const http = require('http');
-const socketIo = require('socket.io');
+const express = require('express');
+const path = require('path');
+
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const wss = new WebSocket.Server({ server });
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
-io.on('connection', (socket) => {
-  console.log('A user connected');
+wss.on('connection', (ws) => {
+  console.log('Client connected');
 
-  socket.on('disconnect', () => {
-    console.log('User disconnected');
+  ws.on('message', (message) => {
+    wss.clients.forEach((client) => {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(message.toString());
+      }
+    });
   });
 
-  socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);
+  ws.on('close', () => {
+    console.log('Client disconnected');
   });
 });
 
 server.listen(3000, () => {
-  console.log('listening on *:3000');
+  console.log('Server started on http://localhost:3000');
 });
